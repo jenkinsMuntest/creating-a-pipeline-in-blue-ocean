@@ -8,16 +8,17 @@ pipeline {
   }
   stages {
     stage('Build') {
-      steps {
-        sh 'npm install'
-      }
-    }
-    stage('Test') {
-      environment {
-        CI = 'true'
-      }
-      steps {
-        sh './jenkins/scripts/test.sh'
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'npm install'
+          }
+        }
+        stage('test') {
+          steps {
+            sh './jenkins/scripts/test.sh'
+          }
+        }
       }
     }
     stage('Deliver') {
