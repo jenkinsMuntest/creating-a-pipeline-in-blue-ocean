@@ -4,7 +4,8 @@ pipeline {
       image 'node:6-alpine'
       args '-p 3000:3000'
     }
-
+    triggers {
+      pollSCM('H/5 * * * *') }
   }
   stages {
     stage('install') {
