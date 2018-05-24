@@ -1,2 +1,2 @@
 #!/bin/bash
-ls testfile1.txt
+sudo ls testfile1.txt
