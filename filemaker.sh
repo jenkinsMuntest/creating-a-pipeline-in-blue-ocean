@@ -1,2 +1,2 @@
 #!/bin/bash
-touch testfile1.txt
+sudo touch testfile1.txt
