@@ -14,9 +14,14 @@ pipeline {
             sh 'npm install'
           }
         }
+        stage('touch') {
+          steps {
+            sh 'touch test.txt'
+          }
+        }
         stage('') {
           steps {
-            sh 'cat /etc/host'
+            sh 'rm test.txt'
           }
         }
       }
