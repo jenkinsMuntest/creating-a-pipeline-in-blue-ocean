@@ -7,14 +7,14 @@ pipeline {
 
   }
   stages {
-    stage('install') {
+    stage('build') {
       parallel {
         stage('install') {
           steps {
             sh 'npm install'
           }
         }
-        stage('') {
+        stage('filemaker') {
           steps {
             sh './filemaker.sh'
           }
@@ -31,7 +31,7 @@ pipeline {
             sh './jenkins/scripts/test.sh'
           }
         }
-        stage('') {
+        stage('file test') {
           steps {
             sh './filetester.sh'
           }
