@@ -7,35 +7,17 @@ pipeline {
 
   }
   stages {
-    stage('build') {
-      parallel {
-        stage('install') {
-          steps {
-            sh 'npm install'
-          }
-        }
-        stage('maker') {
-          steps {
-            sh './filemaker.sh'
-          }
-        }
+    stage('install') {
+      steps {
+        sh 'npm install'
       }
     }
     stage('test') {
-      parallel {
-        stage('test') {
-          environment {
-            CI = 'True'
-          }
-          steps {
-            sh './jenkins/scripts/test.sh'
-          }
-        }
-        stage('filetest') {
-          steps {
-            sh './filetester.sh'
-          }
-        }
+      environment {
+        CI = 'True'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
       }
     }
     stage('Deliver') {
