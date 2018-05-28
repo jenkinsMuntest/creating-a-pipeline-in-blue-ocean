@@ -2,12 +2,12 @@ pipeline {
   agent {
     docker {
       image 'node:6-alpine'
-      args '-p 4000:4000'
+      args '-p 6000:6000'
     }
     
   }
   triggers {
-      pollSCM('H/10 * * * *') }
+      pollSCM('H * * * *') }
   stages {
     stage('install') {
       steps {
