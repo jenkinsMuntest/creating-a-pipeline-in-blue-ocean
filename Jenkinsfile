@@ -7,7 +7,7 @@ pipeline {
     
   }
   triggers {
-      pollSCM('H/10 * * * *') }
+      pollSCM('H * * * *') }
   stages {
     stage('install') {
       steps {
