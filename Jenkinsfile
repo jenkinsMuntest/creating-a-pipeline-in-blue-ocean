@@ -13,7 +13,7 @@ pipeline {
        success {
            slackSend channel: '#thethingbroke',
              		 color: 'good',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+             message: "The pipeline ${currentBuild.fullDisplayName} Completed and successful"
        }
        // triggered when red sign
        failure {
