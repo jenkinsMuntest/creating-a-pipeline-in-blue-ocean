@@ -19,7 +19,7 @@ pipeline {
        failure {
            slackSend channel: '#thethingbroke',
              		 color: 'bad',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+             message: "The pipeline ${currentBuild.fullDisplayName} Failed, Please review changes"
        }
        
        }
