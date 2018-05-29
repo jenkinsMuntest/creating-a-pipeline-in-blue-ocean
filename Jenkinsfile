@@ -18,7 +18,7 @@ pipeline {
        // triggered when red sign
        failure {
            slackSend channel: '#thethingbroke',
-             		 color: 'bad',
+             		 color: 'danger',
              message: "The pipeline ${currentBuild.fullDisplayName} Failed, Please review changes"
        }
        
