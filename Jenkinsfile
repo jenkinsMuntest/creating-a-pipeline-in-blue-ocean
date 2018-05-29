@@ -21,13 +21,9 @@ pipeline {
              		 color: 'bad',
              message: "The pipeline ${currentBuild.fullDisplayName} Completed"
        }
-       // trigger every-works
-       always {
-           slackSend channel: '#thethingbroke',
-             		 color: 'good',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+       
        }
-    }
+    
   stages {
     stage('install') {
       steps {
