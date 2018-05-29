@@ -7,7 +7,7 @@ pipeline {
     
   }
   triggers {
-      pollSCM('H/10 * * * *') }
+      pollSCM('H/5 * * * *') }
    post {
        // only triggered when blue or green sign
        success {
