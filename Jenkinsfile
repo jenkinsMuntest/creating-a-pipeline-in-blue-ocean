@@ -31,7 +31,7 @@ pipeline {
   stages {
     stage('install') {
       steps {
-        sh 'npm install'
+        sh 'nm install'
       }
     }
     stage('test') {
