@@ -8,6 +8,26 @@ pipeline {
   }
   triggers {
       pollSCM('H/10 * * * *') }
+   post {
+       // only triggered when blue or green sign
+       success {
+           slackSend channel: '#thethingbroke',
+             		 color: 'good',
+             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+       }
+       // triggered when red sign
+       failure {
+           slackSend channel: '#thethingbroke',
+             		 color: 'bad',
+             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+       }
+       // trigger every-works
+       always {
+           slackSend channel: '#thethingbroke',
+             		 color: 'good',
+             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
+       }
+    }
   stages {
     stage('install') {
       steps {
@@ -28,26 +48,6 @@ pipeline {
         input 'Finished using the web site? (Click \'Proceed" to continue)'
         
         
-      post {
-       // only triggered when blue or green sign
-       success {
-           slackSend channel: '#thethingbroke',
-             		 color: 'good',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
-       }
-       // triggered when red sign
-       failure {
-           slackSend channel: '#thethingbroke',
-             		 color: 'bad',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
-       }
-       // trigger every-works
-       always {
-           slackSend channel: '#thethingbroke',
-             		 color: 'good',
-             message: "The pipeline ${currentBuild.fullDisplayName} Completed"
-       }
-    }
       }
     }
   }
