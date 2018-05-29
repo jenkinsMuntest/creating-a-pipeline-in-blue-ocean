@@ -1,6 +1,18 @@
 pipeline {
   agent {
     docker {
+      image 'node:6-alpine'
+      args '-p 6000:6000'
+    }
+    
+  }
+  triggers {
+      pollSCM('H/10 * * * *') }
+  stages {
+    stage('install') {
+      steps {
+        sh 'npm install'
+      }
     }
     stage('test') {
       environment {
@@ -15,21 +27,7 @@ pipeline {
         sh './jenkins/scripts/deliver.sh'
         input 'Finished using the web site? (Click \'Proceed" to continue)'
         sh './jenkins/scripts/kill.sh'
- 
       }
     }
- 
-      image 'node:6-alpine'
-      args '-p 6000:6000'
-    }
   }
-  
-  triggers {
-      pollSCM('H/10 * * * *') }
-  stages {
-    stage('install') {
-      steps {
-        sh 'npm install'
-      } }
-
-  }
+}
